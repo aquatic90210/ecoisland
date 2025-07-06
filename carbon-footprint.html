@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Carbon Footprint - EcoLink</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/features.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav">
+        <div class="container nav-content">
+            <a href="dashboard.html" class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoLink</span>
+            </a>
+            <div class="nav-actions">
+                <button class="btn btn-secondary" onclick="window.location.href='dashboard.html'">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Dashboard</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="feature-main">
+        <div class="container">
+            <!-- Header Section -->
+            <section class="feature-header">
+                <div class="feature-title">
+                    <div class="title-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="title-content">
+                        <h1>Personal Carbon Footprint</h1>
+                        <p>Track your daily habits and see your environmental impact with personalized suggestions</p>
+                    </div>
+                </div>
+                <div class="feature-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalCarbon">0.0</span>
+                        <span class="stat-label">Total kg CO₂</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="weeklyAverage">0.0</span>
+                        <span class="stat-label">Weekly Average</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="todayCarbon">0.0</span>
+                        <span class="stat-label">Today's Impact</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Add Section -->
+            <section class="quick-add-section">
+                <h2>Quick Add Activity</h2>
+                <div class="quick-add-grid">
+                    <button class="quick-add-btn" data-category="transport" data-type="car">
+                        <i class="fas fa-car"></i>
+                        <span>Car Trip</span>
+                    </button>
+                    <button class="quick-add-btn" data-category="transport" data-type="bus">
+                        <i class="fas fa-bus"></i>
+                        <span>Bus Ride</span>
+                    </button>
+                    <button class="quick-add-btn" data-category="transport" data-type="train">
+                        <i class="fas fa-train"></i>
+                        <span>Train</span>
+                    </button>
+                    <button class="quick-add-btn" data-category="transport" data-type="plane">
+                        <i class="fas fa-plane"></i>
+                        <span>Flight</span>
+                    </button>
+                    <button class="quick-add-btn" data-category="energy" data-type="electricity">
+                        <i class="fas fa-bolt"></i>
+                        <span>Electricity</span>
+                    </button>
+                    <button class="quick-add-btn" data-category="energy" data-type="gas">
+                        <i class="fas fa-fire"></i>
+                        <span>Gas Usage</span>
+                    </button>
+                    <button class="quick-add-btn" data-category="food" data-type="meat">
+                        <i class="fas fa-drumstick-bite"></i>
+                        <span>Meat Meal</span>
+                    </button>
+                    <button class="quick-add-btn" data-category="food" data-type="dairy">
+                        <i class="fas fa-cheese"></i>
+                        <span>Dairy</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Main Content Grid -->
+            <div class="content-grid">
+                <!-- Left Column -->
+                <div class="left-column">
+                    <!-- Activity Log -->
+                    <section class="activity-log">
+                        <div class="section-header">
+                            <h2>Today's Activities</h2>
+                            <button class="btn btn-primary" id="addActivityBtn">
+                                <i class="fas fa-plus"></i>
+                                <span>Add Activity</span>
+                            </button>
+                        </div>
+                        <div class="activity-list" id="activityList">
+                            <div class="empty-state">
+                                <i class="fas fa-leaf"></i>
+                                <p>No activities logged today</p>
+                                <span>Start tracking your carbon footprint by adding an activity above</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Suggestions -->
+                    <section class="suggestions">
+                        <h2>Eco-Friendly Suggestions</h2>
+                        <div class="suggestions-list" id="suggestionsList">
+                            <div class="suggestion-item">
+                                <div class="suggestion-icon">
+                                    <i class="fas fa-bicycle"></i>
+                                </div>
+                                <div class="suggestion-content">
+                                    <h3>Try cycling or walking</h3>
+                                    <p>Replace short car trips with cycling or walking to reduce emissions</p>
+                                    <span class="impact-badge high">High Impact</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Column -->
+                <div class="right-column">
+                    <!-- Chart Section -->
+                    <section class="chart-section">
+                        <div class="chart-header">
+                            <h2>Carbon Footprint Trends</h2>
+                            <div class="chart-controls">
+                                <button class="chart-btn active" data-period="week">Week</button>
+                                <button class="chart-btn" data-period="month">Month</button>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="carbonChart"></canvas>
+                        </div>
+                    </section>
+
+                    <!-- Breakdown -->
+                    <section class="breakdown-section">
+                        <h2>Today's Breakdown</h2>
+                        <div class="breakdown-chart">
+                            <canvas id="breakdownChart"></canvas>
+                        </div>
+                        <div class="breakdown-legend" id="breakdownLegend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #e74c3c;"></div>
+                                <span>Transport: 0.0 kg</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #f39c12;"></div>
+                                <span>Energy: 0.0 kg</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #27ae60;"></div>
+                                <span>Food: 0.0 kg</span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Activity Modal -->
+    <div class="modal hidden" id="activityModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Activity</h3>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="modal-form" id="activityForm">
+                <div class="form-group">
+                    <label for="activityCategory">Category</label>
+                    <select id="activityCategory" required>
+                        <option value="">Select category</option>
+                        <option value="transport">Transportation</option>
+                        <option value="energy">Energy</option>
+                        <option value="food">Food</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="activityType">Type</label>
+                    <select id="activityType" required>
+                        <option value="">Select type</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="activityAmount">Amount</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="activityAmount" step="0.1" min="0" required>
+                        <span class="unit" id="activityUnit">km</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="activityDate">Date</label>
+                    <input type="date" id="activityDate" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Activity</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/carbon-footprint.js"></script>
+</body>
+</html>
+

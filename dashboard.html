@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLink Dashboard - All to Help our Future</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav">
+        <div class="container nav-content">
+            <a href="#" class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoLink</span>
+            </a>
+            <div class="nav-user">
+                <div class="user-info">
+                    <span class="user-greeting">Welcome back, <span id="userName">User</span>!</span>
+                    <div class="user-stats">
+                        <span class="impact-score">Impact Score: <span id="userImpactScore">0</span></span>
+                    </div>
+                </div>
+                <div class="user-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Content -->
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <h1>Your Environmental Impact Dashboard</h1>
+                    <p>Track your progress, take action, and make a difference in your community</p>
+                </div>
+                <div class="quick-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="carbonSaved">0</span>
+                            <span class="stat-label">kg CO₂ Saved</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="reportsSubmitted">0</span>
+                            <span class="stat-label">Reports Submitted</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="communityActions">0</span>
+                            <span class="stat-label">Community Actions</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Feature Grid -->
+            <section class="features-grid">
+                <h2>Choose Your Action</h2>
+                <div class="grid">
+                    <!-- Personal Carbon Footprint -->
+                    <div class="feature-card" data-feature="carbon-footprint">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Personal Carbon Footprint</h3>
+                            <p>Track your daily habits and see your environmental impact with personalized suggestions</p>
+                            <div class="feature-stats">
+                                <span class="feature-stat">
+                                    <i class="fas fa-calendar-day"></i>
+                                    Today: <span id="todayCarbon">0</span> kg CO₂
+                                </span>
+                            </div>
+                        </div>
+                        <div class="feature-action">
+                            <button class="feature-btn">
+                                <span>Track Now</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Regional Sustainability -->
+                    <div class="feature-card" data-feature="regional-sustainability">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Regional Sustainability</h3>
+                            <p>Explore local environmental data, find eco-resources, and get your area's EcoScore</p>
+                            <div class="feature-stats">
+                                <span class="feature-stat">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span id="userLocation">Your Area</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="feature-action">
+                            <button class="feature-btn">
+                                <span>Explore</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Civic Photo Reporting -->
+                    <div class="feature-card" data-feature="photo-reporting">
+                        <div class="feature-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Civic Photo Reporting</h3>
+                            <p>Report environmental issues with AI-powered classification and get action recommendations</p>
+                            <div class="feature-stats">
+                                <span class="feature-stat">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span id="activeIssues">0</span> Active Issues
+                                </span>
+                            </div>
+                        </div>
+                        <div class="feature-action">
+                            <button class="feature-btn">
+                                <span>Report Issue</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Action Feed -->
+                    <div class="feature-card" data-feature="action-feed">
+                        <div class="feature-icon">
+                            <i class="fas fa-stream"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Action Feed</h3>
+                            <p>Browse nearby environmental issues and community actions in a social media-style feed</p>
+                            <div class="feature-stats">
+                                <span class="feature-stat">
+                                    <i class="fas fa-heart"></i>
+                                    <span id="feedUpdates">0</span> New Updates
+                                </span>
+                            </div>
+                        </div>
+                        <div class="feature-action">
+                            <button class="feature-btn">
+                                <span>Browse Feed</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Impact Visualizer -->
+                    <div class="feature-card" data-feature="impact-visualizer">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Impact Visualizer</h3>
+                            <p>See your environmental impact through gamified charts and beautiful animations</p>
+                            <div class="feature-stats">
+                                <span class="feature-stat">
+                                    <i class="fas fa-trophy"></i>
+                                    Level <span id="userLevel">1</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="feature-action">
+                            <button class="feature-btn">
+                                <span>View Impact</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Settings and Profile -->
+                    <div class="feature-card" data-feature="settings">
+                        <div class="feature-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Settings & Profile</h3>
+                            <p>Manage your account, preferences, and view app information</p>
+                            <div class="feature-stats">
+                                <span class="feature-stat">
+                                    <i class="fas fa-user"></i>
+                                    Member since <span id="memberSince">Today</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="feature-action">
+                            <button class="feature-btn">
+                                <span>Settings</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="recent-activity">
+                <h2>Recent Activity</h2>
+                <div class="activity-list" id="activityList">
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="activity-content">
+                            <span class="activity-text">Welcome to EcoLink! Start by tracking your carbon footprint.</span>
+                            <span class="activity-time">Just now</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2025 EcoLink - All to Help our Future. Making a difference, one action at a time.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
+

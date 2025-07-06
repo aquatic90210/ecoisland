@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Action Feed - EcoLink</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/features.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav">
+        <div class="container nav-content">
+            <a href="dashboard.html" class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoLink</span>
+            </a>
+            <div class="nav-actions">
+                <button class="btn btn-secondary" onclick="window.location.href='dashboard.html'">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Dashboard</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="action-feed-main">
+        <div class="container">
+            <!-- Header Section -->
+            <section class="feature-header">
+                <div class="feature-title">
+                    <div class="title-icon">
+                        <i class="fas fa-stream"></i>
+                    </div>
+                    <div class="title-content">
+                        <h1>Action Feed</h1>
+                        <p>Discover and share environmental actions in your community</p>
+                    </div>
+                </div>
+                <div class="feed-filters">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-globe"></i>
+                        <span>All</span>
+                    </button>
+                    <button class="filter-btn" data-filter="local">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Local</span>
+                    </button>
+                    <button class="filter-btn" data-filter="reports">
+                        <i class="fas fa-camera"></i>
+                        <span>Reports</span>
+                    </button>
+                    <button class="filter-btn" data-filter="actions">
+                        <i class="fas fa-hands-helping"></i>
+                        <span>Actions</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Create Post Section -->
+            <section class="create-post">
+                <div class="post-composer">
+                    <div class="composer-header">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="composer-input">
+                            <textarea id="postContent" placeholder="Share an environmental action or tip..."></textarea>
+                        </div>
+                    </div>
+                    <div class="composer-actions">
+                        <div class="post-options">
+                            <button class="option-btn" id="addPhotoBtn">
+                                <i class="fas fa-camera"></i>
+                                <span>Photo</span>
+                            </button>
+                            <button class="option-btn" id="addLocationBtn">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Location</span>
+                            </button>
+                            <button class="option-btn" id="addTagBtn">
+                                <i class="fas fa-hashtag"></i>
+                                <span>Tag</span>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary" id="publishBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Share</span>
+                        </button>
+                    </div>
+                    <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                </div>
+            </section>
+
+            <!-- Action Feed -->
+            <section class="feed-container">
+                <div class="feed-scroll" id="feedScroll">
+                    <!-- Feed items will be dynamically loaded here -->
+                </div>
+                <div class="loading-indicator hidden" id="loadingIndicator">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Loading more actions...</span>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/action-feed.js"></script>
+</body>
+</html>
+

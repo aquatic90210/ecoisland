@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civic Photo Reporting - EcoLink</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/features.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav">
+        <div class="container nav-content">
+            <a href="dashboard.html" class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoLink</span>
+            </a>
+            <div class="nav-actions">
+                <button class="btn btn-secondary" onclick="window.location.href='dashboard.html'">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Dashboard</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="feature-main">
+        <div class="container">
+            <!-- Header Section -->
+            <section class="feature-header">
+                <div class="feature-title">
+                    <div class="title-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="title-content">
+                        <h1>Civic Photo Reporting</h1>
+                        <p>Report environmental issues in your community and get AI-powered action suggestions</p>
+                    </div>
+                </div>
+                <div class="feature-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="reportsCount">0</span>
+                        <span class="stat-label">Reports Made</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="issuesResolved">0</span>
+                        <span class="stat-label">Issues Resolved</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="communityImpact">0</span>
+                        <span class="stat-label">Community Impact</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Photo Upload Section -->
+            <section class="photo-upload-section">
+                <div class="upload-container">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <i class="fas fa-camera upload-icon"></i>
+                            <h3>Take or Upload a Photo</h3>
+                            <p>Capture environmental issues like litter, pollution, or damaged infrastructure</p>
+                            <div class="upload-buttons">
+                                <button class="btn btn-primary" id="cameraBtn">
+                                    <i class="fas fa-camera"></i>
+                                    <span>Take Photo</span>
+                                </button>
+                                <button class="btn btn-secondary" id="uploadBtn">
+                                    <i class="fas fa-upload"></i>
+                                    <span>Upload Photo</span>
+                                </button>
+                            </div>
+                            <input type="file" id="fileInput" accept="image/*" capture="environment" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analysis Results -->
+            <section class="analysis-section hidden" id="analysisSection">
+                <div class="analysis-container">
+                    <div class="photo-preview">
+                        <img id="previewImage" alt="Uploaded photo">
+                        <button class="btn btn-secondary btn-small" id="retakeBtn">
+                            <i class="fas fa-redo"></i>
+                            <span>Retake</span>
+                        </button>
+                    </div>
+                    <div class="analysis-results">
+                        <div class="analysis-header">
+                            <h3>AI Analysis Results</h3>
+                            <div class="analysis-status" id="analysisStatus">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>Analyzing image...</span>
+                            </div>
+                        </div>
+                        <div class="issue-detection" id="issueDetection">
+                            <!-- AI detection results will be populated here -->
+                        </div>
+                        <div class="action-suggestions" id="actionSuggestions">
+                            <!-- Action suggestions will be populated here -->
+                        </div>
+                        <div class="report-actions">
+                            <button class="btn btn-primary" id="submitReportBtn">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Submit Report</span>
+                            </button>
+                            <button class="btn btn-secondary" id="shareActionBtn">
+                                <i class="fas fa-share"></i>
+                                <span>Share to Action Feed</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Reports -->
+            <section class="recent-reports">
+                <h2>Your Recent Reports</h2>
+                <div class="reports-grid" id="reportsGrid">
+                    <div class="empty-state">
+                        <i class="fas fa-camera-retro"></i>
+                        <h3>No reports yet</h3>
+                        <p>Start by taking a photo of an environmental issue in your community</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Community Reports -->
+            <section class="community-reports">
+                <h2>Community Reports</h2>
+                <div class="community-grid" id="communityGrid">
+                    <!-- Sample community reports -->
+                    <div class="report-card">
+                        <div class="report-image">
+                            <div class="placeholder-image">
+                                <i class="fas fa-trash"></i>
+                            </div>
+                        </div>
+                        <div class="report-content">
+                            <div class="report-type">Litter</div>
+                            <h4>Trash accumulation near park entrance</h4>
+                            <p>Large amount of litter spotted near Memorial Park entrance. Needs immediate cleanup.</p>
+                            <div class="report-meta">
+                                <span class="report-location"><i class="fas fa-map-marker-alt"></i> Memorial Park</span>
+                                <span class="report-time"><i class="fas fa-clock"></i> 2 hours ago</span>
+                            </div>
+                            <div class="report-status resolved">
+                                <i class="fas fa-check"></i>
+                                <span>Resolved</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="report-card">
+                        <div class="report-image">
+                            <div class="placeholder-image">
+                                <i class="fas fa-smog"></i>
+                            </div>
+                        </div>
+                        <div class="report-content">
+                            <div class="report-type">Air Pollution</div>
+                            <h4>Heavy smoke from industrial area</h4>
+                            <p>Unusual amount of smoke coming from industrial district affecting air quality.</p>
+                            <div class="report-meta">
+                                <span class="report-location"><i class="fas fa-map-marker-alt"></i> Industrial District</span>
+                                <span class="report-time"><i class="fas fa-clock"></i> 5 hours ago</span>
+                            </div>
+                            <div class="report-status pending">
+                                <i class="fas fa-clock"></i>
+                                <span>Under Review</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="report-card">
+                        <div class="report-image">
+                            <div class="placeholder-image">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                        </div>
+                        <div class="report-content">
+                            <div class="report-type">Water Pollution</div>
+                            <h4>Oil spill in Buffalo Bayou</h4>
+                            <p>Small oil spill detected in Buffalo Bayou near downtown area. Wildlife at risk.</p>
+                            <div class="report-meta">
+                                <span class="report-location"><i class="fas fa-map-marker-alt"></i> Buffalo Bayou</span>
+                                <span class="report-time"><i class="fas fa-clock"></i> 1 day ago</span>
+                            </div>
+                            <div class="report-status in-progress">
+                                <i class="fas fa-tools"></i>
+                                <span>In Progress</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/photo-reporting.js"></script>
+</body>
+</html>
+

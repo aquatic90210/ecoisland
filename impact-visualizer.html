@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact Visualizer - EcoLink</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/features.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav">
+        <div class="container nav-content">
+            <a href="dashboard.html" class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoLink</span>
+            </a>
+            <div class="nav-actions">
+                <button class="btn btn-secondary" onclick="window.location.href='dashboard.html'">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Dashboard</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="feature-main">
+        <div class="container">
+            <!-- Header Section -->
+            <section class="feature-header">
+                <div class="feature-title">
+                    <div class="title-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="title-content">
+                        <h1>Impact Visualizer</h1>
+                        <p>See how your actions are making a difference for the planet and your community</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievement Level -->
+            <section class="achievement-level">
+                <div class="level-container">
+                    <div class="level-info">
+                        <div class="level-badge">
+                            <div class="level-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div class="level-details">
+                                <h3 id="currentLevel">Eco Warrior</h3>
+                                <p>Level 3 Environmental Champion</p>
+                            </div>
+                        </div>
+                        <div class="level-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="levelProgress" style="width: 65%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="currentXP">650</span> / <span id="nextLevelXP">1000</span> XP
+                            </div>
+                        </div>
+                    </div>
+                    <div class="next-level">
+                        <div class="next-level-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="next-level-text">
+                            <strong>Next: Green Guardian</strong>
+                            <span>350 XP to go</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Impact Stats Grid -->
+            <section class="impact-stats">
+                <div class="stats-grid">
+                    <div class="stat-card carbon-saved">
+                        <div class="stat-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="carbonSaved">12.5</div>
+                            <div class="stat-unit">kg CO₂ saved</div>
+                            <div class="stat-comparison">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+2.3 kg this week</span>
+                            </div>
+                        </div>
+                        <div class="stat-visual">
+                            <div class="floating-leaves">
+                                <i class="fas fa-leaf"></i>
+                                <i class="fas fa-leaf"></i>
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card reports-made">
+                        <div class="stat-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="reportsMade">7</div>
+                            <div class="stat-unit">issues reported</div>
+                            <div class="stat-comparison">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>3 resolved</span>
+                            </div>
+                        </div>
+                        <div class="stat-visual">
+                            <div class="pulse-effect"></div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card community-impact">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="communityImpact">23</div>
+                            <div class="stat-unit">people inspired</div>
+                            <div class="stat-comparison">
+                                <i class="fas fa-heart"></i>
+                                <span>45 likes received</span>
+                            </div>
+                        </div>
+                        <div class="stat-visual">
+                            <div class="ripple-effect"></div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card streak-counter">
+                        <div class="stat-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="streakDays">14</div>
+                            <div class="stat-unit">day streak</div>
+                            <div class="stat-comparison">
+                                <i class="fas fa-trophy"></i>
+                                <span>Personal best!</span>
+                            </div>
+                        </div>
+                        <div class="stat-visual">
+                            <div class="flame-animation">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Impact Visualization -->
+            <section class="impact-visualization">
+                <div class="visualization-grid">
+                    <!-- Carbon Impact Chart -->
+                    <div class="chart-container">
+                        <h3>Carbon Impact Over Time</h3>
+                        <canvas id="carbonChart"></canvas>
+                    </div>
+
+                    <!-- Activity Breakdown -->
+                    <div class="chart-container">
+                        <h3>Activity Breakdown</h3>
+                        <canvas id="activityChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements -->
+            <section class="achievements">
+                <h2>Achievements</h2>
+                <div class="achievements-grid" id="achievementsGrid">
+                    <!-- Achievements will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Environmental Impact -->
+            <section class="environmental-impact">
+                <h2>Your Environmental Impact</h2>
+                <div class="impact-cards">
+                    <div class="impact-card trees">
+                        <div class="impact-visual">
+                            <div class="tree-animation">
+                                <i class="fas fa-tree"></i>
+                                <i class="fas fa-tree"></i>
+                                <i class="fas fa-tree"></i>
+                            </div>
+                        </div>
+                        <div class="impact-content">
+                            <h4>Trees Equivalent</h4>
+                            <div class="impact-value">2.3 trees</div>
+                            <p>Your carbon savings equal the CO₂ absorbed by 2.3 trees in a year</p>
+                        </div>
+                    </div>
+
+                    <div class="impact-card energy">
+                        <div class="impact-visual">
+                            <div class="energy-animation">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                        </div>
+                        <div class="impact-content">
+                            <h4>Energy Saved</h4>
+                            <div class="impact-value">45 kWh</div>
+                            <p>Enough to power an average home for 1.5 days</p>
+                        </div>
+                    </div>
+
+                    <div class="impact-card water">
+                        <div class="impact-visual">
+                            <div class="water-animation">
+                                <i class="fas fa-tint"></i>
+                                <i class="fas fa-tint"></i>
+                                <i class="fas fa-tint"></i>
+                            </div>
+                        </div>
+                        <div class="impact-content">
+                            <h4>Water Protected</h4>
+                            <div class="impact-value">120 L</div>
+                            <p>Equivalent to preventing pollution in 120 liters of water</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Goals and Challenges -->
+            <section class="goals-challenges">
+                <h2>Goals & Challenges</h2>
+                <div class="goals-grid">
+                    <div class="goal-card active">
+                        <div class="goal-header">
+                            <div class="goal-icon">
+                                <i class="fas fa-bicycle"></i>
+                            </div>
+                            <div class="goal-info">
+                                <h4>Bike to Work Challenge</h4>
+                                <p>Bike to work 10 times this month</p>
+                            </div>
+                        </div>
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                            <div class="progress-text">6 / 10 days</div>
+                        </div>
+                        <div class="goal-reward">
+                            <i class="fas fa-trophy"></i>
+                            <span>+200 XP</span>
+                        </div>
+                    </div>
+
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <div class="goal-icon">
+                                <i class="fas fa-recycle"></i>
+                            </div>
+                            <div class="goal-info">
+                                <h4>Recycling Master</h4>
+                                <p>Log 20 recycling activities</p>
+                            </div>
+                        </div>
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                            <div class="progress-text">17 / 20 items</div>
+                        </div>
+                        <div class="goal-reward">
+                            <i class="fas fa-medal"></i>
+                            <span>+150 XP</span>
+                        </div>
+                    </div>
+
+                    <div class="goal-card completed">
+                        <div class="goal-header">
+                            <div class="goal-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="goal-info">
+                                <h4>Energy Saver</h4>
+                                <p>Reduce energy usage by 20%</p>
+                            </div>
+                        </div>
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill completed" style="width: 100%"></div>
+                            </div>
+                            <div class="progress-text">Completed!</div>
+                        </div>
+                        <div class="goal-reward completed">
+                            <i class="fas fa-check"></i>
+                            <span>+100 XP</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/impact-visualizer.js"></script>
+</body>
+</html>
+

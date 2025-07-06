@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regional Sustainability - EcoLink</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/features.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav">
+        <div class="container nav-content">
+            <a href="dashboard.html" class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoLink</span>
+            </a>
+            <div class="nav-actions">
+                <button class="btn btn-secondary" onclick="window.location.href='dashboard.html'">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Dashboard</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="feature-main">
+        <div class="container">
+            <!-- Header Section -->
+            <section class="feature-header">
+                <div class="feature-title">
+                    <div class="title-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <div class="title-content">
+                        <h1>Regional Sustainability</h1>
+                        <p>Explore local environmental data, find eco-resources, and get your area's EcoScore</p>
+                    </div>
+                </div>
+                <div class="feature-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="ecoScore">B+</span>
+                        <span class="stat-label">EcoScore</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="airQuality">Good</span>
+                        <span class="stat-label">Air Quality</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="recyclingRate">68%</span>
+                        <span class="stat-label">Recycling Rate</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Location Info -->
+            <section class="location-info">
+                <div class="location-header">
+                    <h2><i class="fas fa-map-marker-alt"></i> <span id="currentLocation">Houston, Harris County</span></h2>
+                    <button class="btn btn-primary" id="changeLocationBtn">
+                        <i class="fas fa-edit"></i>
+                        <span>Change Location</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Main Content Grid -->
+            <div class="sustainability-grid">
+                <!-- Left Column -->
+                <div class="left-column">
+                    <!-- Environmental Data -->
+                    <section class="environmental-data">
+                        <h2>Environmental Data</h2>
+                        <div class="data-cards">
+                            <div class="data-card air-quality">
+                                <div class="data-icon">
+                                    <i class="fas fa-wind"></i>
+                                </div>
+                                <div class="data-content">
+                                    <h3>Air Quality Index</h3>
+                                    <div class="data-value">
+                                        <span class="value" id="aqiValue">42</span>
+                                        <span class="status good">Good</span>
+                                    </div>
+                                    <p>PM2.5: 8 μg/m³ | PM10: 15 μg/m³</p>
+                                </div>
+                            </div>
+
+                            <div class="data-card water-quality">
+                                <div class="data-icon">
+                                    <i class="fas fa-tint"></i>
+                                </div>
+                                <div class="data-content">
+                                    <h3>Water Quality</h3>
+                                    <div class="data-value">
+                                        <span class="value">85</span>
+                                        <span class="status good">Excellent</span>
+                                    </div>
+                                    <p>Safe drinking water standards met</p>
+                                </div>
+                            </div>
+
+                            <div class="data-card green-space">
+                                <div class="data-icon">
+                                    <i class="fas fa-tree"></i>
+                                </div>
+                                <div class="data-content">
+                                    <h3>Green Space Coverage</h3>
+                                    <div class="data-value">
+                                        <span class="value">23%</span>
+                                        <span class="status moderate">Moderate</span>
+                                    </div>
+                                    <p>Parks and natural areas per capita</p>
+                                </div>
+                            </div>
+
+                            <div class="data-card energy-mix">
+                                <div class="data-icon">
+                                    <i class="fas fa-solar-panel"></i>
+                                </div>
+                                <div class="data-content">
+                                    <h3>Renewable Energy</h3>
+                                    <div class="data-value">
+                                        <span class="value">31%</span>
+                                        <span class="status good">Growing</span>
+                                    </div>
+                                    <p>Solar and wind energy adoption</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Take Action -->
+                    <section class="take-action">
+                        <h2>Take Action in Your Area</h2>
+                        <div class="action-list">
+                            <div class="action-item">
+                                <div class="action-icon">
+                                    <i class="fas fa-recycle"></i>
+                                </div>
+                                <div class="action-content">
+                                    <h3>Improve Recycling</h3>
+                                    <p>Harris County recycling rate is below the state average. Learn proper sorting techniques.</p>
+                                    <button class="action-btn">Learn More</button>
+                                </div>
+                            </div>
+
+                            <div class="action-item">
+                                <div class="action-icon">
+                                    <i class="fas fa-bus"></i>
+                                </div>
+                                <div class="action-content">
+                                    <h3>Use Public Transit</h3>
+                                    <p>METRO Houston offers extensive bus and rail networks to reduce emissions.</p>
+                                    <button class="action-btn">View Routes</button>
+                                </div>
+                            </div>
+
+                            <div class="action-item">
+                                <div class="action-icon">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                                <div class="action-content">
+                                    <h3>Plant Native Species</h3>
+                                    <p>Support local biodiversity by planting Texas native plants in your garden.</p>
+                                    <button class="action-btn">Get Guide</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Column -->
+                <div class="right-column">
+                    <!-- Map Section -->
+                    <section class="map-section">
+                        <h2>Eco-Resources Near You</h2>
+                        <div class="map-container">
+                            <div id="sustainabilityMap"></div>
+                        </div>
+                        <div class="map-legend">
+                            <div class="legend-item">
+                                <div class="legend-marker recycling"></div>
+                                <span>Recycling Centers</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-marker solar"></div>
+                                <span>Solar Installations</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-marker park"></div>
+                                <span>Parks & Green Spaces</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-marker charging"></div>
+                                <span>EV Charging Stations</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- EcoScore Breakdown -->
+                    <section class="ecoscore-breakdown">
+                        <h2>EcoScore Breakdown</h2>
+                        <div class="score-details">
+                            <div class="score-item">
+                                <div class="score-label">Air Quality</div>
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width: 85%"></div>
+                                </div>
+                                <div class="score-value">85/100</div>
+                            </div>
+                            <div class="score-item">
+                                <div class="score-label">Water Quality</div>
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width: 90%"></div>
+                                </div>
+                                <div class="score-value">90/100</div>
+                            </div>
+                            <div class="score-item">
+                                <div class="score-label">Waste Management</div>
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width: 68%"></div>
+                                </div>
+                                <div class="score-value">68/100</div>
+                            </div>
+                            <div class="score-item">
+                                <div class="score-label">Green Transportation</div>
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width: 72%"></div>
+                                </div>
+                                <div class="score-value">72/100</div>
+                            </div>
+                            <div class="score-item">
+                                <div class="score-label">Renewable Energy</div>
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width: 75%"></div>
+                                </div>
+                                <div class="score-value">75/100</div>
+                            </div>
+                        </div>
+                        <div class="overall-score">
+                            <div class="overall-label">Overall EcoScore</div>
+                            <div class="overall-value">B+ (78/100)</div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Change Location Modal -->
+    <div class="modal hidden" id="locationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Change Location</h3>
+                <button class="modal-close" id="closeLocationModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="modal-form" id="locationForm">
+                <div class="form-group">
+                    <label for="newCountry">Country</label>
+                    <input type="text" id="newCountry" placeholder="United States" required>
+                </div>
+                <div class="form-group">
+                    <label for="newCity">City</label>
+                    <input type="text" id="newCity" placeholder="Houston" required>
+                </div>
+                <div class="form-group">
+                    <label for="newCounty">County/State</label>
+                    <input type="text" id="newCounty" placeholder="Harris County" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelLocationBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Update Location</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/regional-sustainability.js"></script>
+</body>
+</html>
+

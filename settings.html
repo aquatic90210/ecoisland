@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings & Profile - EcoLink</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/features.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav">
+        <div class="container nav-content">
+            <a href="dashboard.html" class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoLink</span>
+            </a>
+            <div class="nav-actions">
+                <button class="btn btn-secondary" onclick="window.location.href='dashboard.html'">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Dashboard</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="feature-main">
+        <div class="container">
+            <!-- Header Section -->
+            <section class="feature-header">
+                <div class="feature-title">
+                    <div class="title-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <div class="title-content">
+                        <h1>Settings & Profile</h1>
+                        <p>Manage your account, preferences, and app settings</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Grid -->
+            <div class="settings-grid">
+                <!-- Profile Section -->
+                <section class="settings-section">
+                    <h2>Profile Information</h2>
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h3 id="profileUsername">Loading...</h3>
+                            <p id="profileLocation">Loading...</p>
+                            <div class="profile-stats">
+                                <div class="stat">
+                                    <span class="stat-value" id="profileLevel">3</span>
+                                    <span class="stat-label">Level</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value" id="profileXP">650</span>
+                                    <span class="stat-label">XP</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value" id="profileDays">14</span>
+                                    <span class="stat-label">Days Active</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="editProfileBtn">
+                            <i class="fas fa-edit"></i>
+                            <span>Edit Profile</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- App Preferences -->
+                <section class="settings-section">
+                    <h2>App Preferences</h2>
+                    <div class="settings-list">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Dark Mode</h4>
+                                <p>Switch to dark theme for better viewing in low light</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="darkModeToggle">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Notifications</h4>
+                                <p>Receive updates about your environmental impact</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="notificationsToggle" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Auto-sync Data</h4>
+                                <p>Automatically sync your data across devices</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="autoSyncToggle" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Weekly Reports</h4>
+                                <p>Get weekly summaries of your environmental impact</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="weeklyReportsToggle" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Data Management -->
+                <section class="settings-section">
+                    <h2>Data Management</h2>
+                    <div class="data-actions">
+                        <div class="data-item">
+                            <div class="data-info">
+                                <h4>Export Data</h4>
+                                <p>Download all your environmental data and reports</p>
+                            </div>
+                            <button class="btn btn-secondary" id="exportDataBtn">
+                                <i class="fas fa-download"></i>
+                                <span>Export</span>
+                            </button>
+                        </div>
+
+                        <div class="data-item">
+                            <div class="data-info">
+                                <h4>Clear Cache</h4>
+                                <p>Clear temporary data to free up storage space</p>
+                            </div>
+                            <button class="btn btn-secondary" id="clearCacheBtn">
+                                <i class="fas fa-trash-alt"></i>
+                                <span>Clear</span>
+                            </button>
+                        </div>
+
+                        <div class="data-item">
+                            <div class="data-info">
+                                <h4>Reset All Data</h4>
+                                <p>Permanently delete all your data and start fresh</p>
+                            </div>
+                            <button class="btn btn-danger" id="resetDataBtn">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Reset</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- About & Support -->
+                <section class="settings-section">
+                    <h2>About & Support</h2>
+                    <div class="about-content">
+                        <div class="app-info">
+                            <div class="app-logo">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="app-details">
+                                <h3>EcoLink</h3>
+                                <p>Version 1.0.0</p>
+                                <p class="app-description">
+                                    All to Help our Future - EcoLink is your comprehensive platform for environmental action, 
+                                    community engagement, and sustainable living.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="support-links">
+                            <a href="#" class="support-link">
+                                <i class="fas fa-question-circle"></i>
+                                <span>Help & FAQ</span>
+                            </a>
+                            <a href="#" class="support-link">
+                                <i class="fas fa-bug"></i>
+                                <span>Report a Bug</span>
+                            </a>
+                            <a href="#" class="support-link">
+                                <i class="fas fa-star"></i>
+                                <span>Rate the App</span>
+                            </a>
+                            <a href="#" class="support-link">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Privacy Policy</span>
+                            </a>
+                            <a href="#" class="support-link">
+                                <i class="fas fa-file-contract"></i>
+                                <span>Terms of Service</span>
+                            </a>
+                        </div>
+
+                        <div class="credits">
+                            <h4>Credits</h4>
+                            <p>Developed for the Congressional App Challenge</p>
+                            <p>Built with passion for environmental sustainability</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Account Actions -->
+                <section class="settings-section">
+                    <h2>Account</h2>
+                    <div class="account-actions">
+                        <button class="btn btn-secondary" id="changePasswordBtn">
+                            <i class="fas fa-key"></i>
+                            <span>Change Password</span>
+                        </button>
+                        <button class="btn btn-danger" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Log Out</span>
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal hidden" id="editProfileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Profile</h3>
+                <button class="modal-close" id="closeEditModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="modal-form" id="editProfileForm">
+                <div class="form-group">
+                    <label for="editUsername">Username</label>
+                    <input type="text" id="editUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="editCountry">Country</label>
+                    <input type="text" id="editCountry" required>
+                </div>
+                <div class="form-group">
+                    <label for="editCity">City</label>
+                    <input type="text" id="editCity" required>
+                </div>
+                <div class="form-group">
+                    <label for="editCounty">County/State</label>
+                    <input type="text" id="editCounty" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelEditBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/settings.js"></script>
+</body>
+</html>
+
